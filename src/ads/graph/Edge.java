@@ -37,12 +37,16 @@ public class Edge {
 
     @Override
     public boolean equals(Object o) {
-        Edge e = (Edge) o;
-        return x == e.x && y == e.y;
+        if(this!=null && o!=null){
+
+            Edge e = (Edge) o;
+            return ((x == e.x && y == e.y) || (x == e.y && y == e.x));
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
-        return x + 37*y;
+        return x + y;
     }
 }
