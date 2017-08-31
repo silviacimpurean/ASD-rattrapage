@@ -18,12 +18,14 @@ public class PrimAvecSources {
      * returns the set all edges of a MINIMUM SPANNING FOREST of the graph G connected to a list of sources
      * @param G the weighted undirected graph containing all the houses (vertices) that have to be linked to the electricity network
      * @param sources the houses (vertices) that are directly connected to the electric sources
+     * @complexity: O(E) E being the number of edges.
      */
     public static Set<Edge> fcm(WeightedUnDiGraph G, List<Integer> sources) throws FullHeapException, EmptyHeapException {
 
         Set<Edge> fcm = new HashSet<Edge>(); // the edges of the MSF
 
         // to make a minimum-heap of weighted edges
+
         Comparator<WeightedEdge> c = new Comparator<WeightedEdge>() {
             public int compare(WeightedEdge e1, WeightedEdge e2) {
                 return e2.compareTo(e1);
@@ -38,17 +40,19 @@ public class PrimAvecSources {
 
         // the number of known vertices (the number of houses connected to the electric network), which is equal to the number of sources that we receive as a parameter
         int knownVertices = sources.size();
-
+        // complexity ? |S|
         for(int m = 0 ; m < sources.size(); m++) {
 
             // we initialize the list of known vertices from the sources' list
             known[sources.get(m)] = true;
 
             // we add the edges incident to the sources in the heap (the houses that can be directly connected to the sources)
+            // complexity : |e(s)|
             for (Edge e : G.incidents(sources.get(m)))
                 minHeap.add(new WeightedEdge(e, G.weight(e)));
         }
         // while not all vertices are known (i.e. connected)
+        // complexity ? |S|
         while ( knownVertices < G.nbVertices() ) {
 
             // we select the edge with the lowest cost and we delete it from the heap
