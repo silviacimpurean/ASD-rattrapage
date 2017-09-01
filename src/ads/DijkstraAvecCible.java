@@ -107,8 +107,7 @@ public class DijkstraAvecCible {
 
 
     /**
-     * For testing: the graph G is the one from
-     * part 1 of lab #11
+     * For testing: the graph G can be found in the report
      */
     public static void main(String[] args) {
         WeightedDiGraph G = new WeightedDiGraph(12);
