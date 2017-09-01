@@ -45,6 +45,7 @@ public class Kruskal {
         DisjointSets ds = new DisjointSets(G.nbVertices());
 
         // while there are more edges to check
+        //complxity of loop : number of edges
         while ( ! minHeap.isEmpty() ) {
             WeightedEdge min = minHeap.deleteExtreme();
             int u = min.origin();

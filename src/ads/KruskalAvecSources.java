@@ -50,6 +50,7 @@ public class KruskalAvecSources {
         DisjointSets ds = new DisjointSets(G.nbVertices());
 
         // while there are more edges to check
+        // complextiy Number of edged
         while ( ! minHeap.isEmpty() ) {
 
             // select the edge with minimum cost
@@ -58,6 +59,7 @@ public class KruskalAvecSources {
             int v = min.destination();
 
             // check if both nods of the selected edge are in the same set
+            // complexity number of edges
             int ru = ds.find(u);
             int rv = ds.find(v);
 
